@@ -2,55 +2,109 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>心理咨询小站</title>
 
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial;
+      background: #f2f4f8;
+      color: #333;
     }
 
     header {
-      background: #4a90e2;
+      background: linear-gradient(135deg, #4a90e2, #6fb1ff);
       color: white;
-      padding: 20px;
+      padding: 30px 20px;
       text-align: center;
+      border-radius: 0 0 18px 18px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    header p {
+      margin-top: 8px;
+      opacity: 0.9;
+      font-size: 14px;
     }
 
     section {
-      padding: 60px 20px;
-      max-width: 800px;
-      margin: 0 auto;
+      background: white;
+      margin: 15px auto;
+      padding: 20px;
+      max-width: 700px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease;
     }
 
-    section:nth-child(even) {
-      background: #f5f6f8;
+    section:active {
+      transform: scale(0.99);
     }
 
     h2 {
-      margin-bottom: 20px;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
     }
 
     button {
-      padding: 10px 20px;
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
       border: none;
+      border-radius: 10px;
       background: #4a90e2;
       color: white;
-      border-radius: 6px;
+      font-size: 16px;
       cursor: pointer;
+      transition: 0.2s;
     }
 
-    textarea, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      margin-bottom: 20px;
+    button:active {
+      transform: scale(0.98);
     }
 
     .result {
-      margin-top: 20px;
-      font-weight: bold;
-      color: #333;
+      margin-top: 12px;
+      font-size: 14px;
+      color: #444;
+      min-height: 20px;
+    }
+
+    /* 手机优化 */
+    @media (max-width: 768px) {
+      section {
+        margin: 10px;
+        padding: 16px;
+      }
+
+      header h1 {
+        font-size: 20px;
+      }
+
+      button {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
@@ -59,7 +113,7 @@
 
 <header>
   <h1>心理咨询小站</h1>
-  <p>关注你的情绪状态</p>
+  <p>记录情绪 · 温柔陪伴</p>
 </header>
 
 <!-- 情绪测试 -->
@@ -73,26 +127,25 @@
   </select>
 
   <button onclick="checkMood()">查看建议</button>
-
   <div class="result" id="moodResult"></div>
 </section>
 
-<!-- 留言咨询 -->
+<!-- 留言 -->
 <section>
   <h2>留言咨询</h2>
 
   <textarea id="message" placeholder="写下你的烦恼..."></textarea>
 
   <button onclick="submitMessage()">提交</button>
-
   <div class="result" id="msgResult"></div>
 </section>
 
-<!-- 简单介绍 -->
+<!-- 关于 -->
 <section>
   <h2>关于我们</h2>
-  <p>
-    我们提供基础心理支持建议。如果你长期感到情绪困扰，建议寻求专业帮助。
+  <p style="font-size:14px; line-height:1.6;">
+    我们提供基础心理支持与情绪记录功能。<br>
+    如果你长期感到情绪困扰，建议寻求专业心理帮助。
   </p>
 </section>
 
@@ -102,11 +155,11 @@
     const result = document.getElementById("moodResult");
 
     if (mood === "happy") {
-      result.innerText = "太好了！继续保持，让快乐延续～";
+      result.innerText = "✨ 很棒！今天的你充满能量，继续保持～";
     } else if (mood === "normal") {
-      result.innerText = "可以尝试运动或听音乐，让自己放松一下。";
+      result.innerText = "🌿 可以去散步、听音乐，让自己放松一下。";
     } else {
-      result.innerText = "也许你需要休息一下，或者找人聊聊。";
+      result.innerText = "🌙 你可以先休息一下，或者找人聊聊，你并不孤单。";
     }
   }
 
@@ -115,12 +168,11 @@
     const result = document.getElementById("msgResult");
 
     if (msg.trim() === "") {
-      result.innerText = "请输入内容再提交。";
-      return; 
-      //return作用是立即中止function 提示也可选返回值。多层嵌套只中止一层。
+      result.innerText = "⚠️ 请输入内容再提交。";
+      return;
     }
 
-    result.innerText = "我们已收到你的留言，会尽快关注你的情况 ❤️";
+    result.innerText = "💙 已收到你的留言，我们会认真看见你的情绪。";
   }
 </script>
 
