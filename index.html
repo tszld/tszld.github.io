@@ -1,180 +1,174 @@
-<!DOCTYPE html>
-<html lang="zh">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>心理咨询小站</title>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dong Li — graduate student at Shanghai Jiao Tong University. Research in ice-sheet dynamics and scientific computing; engineering projects in AI and robotics.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Dong Li | Research & Engineering</title>
   <style>
+    :root {
+      --text: #22252b;
+      --subtle: #56606b;
+      --rule: #dfe3e7;
+      --link: #174f83;
+      --page: #fff;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial;
-      background: #f2f4f8;
-      color: #333;
+      background: var(--page);
+      color: var(--text);
+      font: 15px/1.57 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
-
-    header {
-      background: linear-gradient(135deg, #4a90e2, #6fb1ff);
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
-      border-radius: 0 0 18px 18px;
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+    .page { max-width: 848px; margin: 0 auto; padding: 36px 30px 34px; }
+    .header { padding-bottom: 19px; border-bottom: 1px solid var(--rule); }
+    .header h1 {
+      font: 500 34px/1.18 Georgia, "Times New Roman", serif;
+      letter-spacing: -.7px;
+      margin: 0 0 4px;
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-
-    header p {
-      margin-top: 8px;
-      opacity: 0.9;
-      font-size: 14px;
-    }
-
-    section {
-      background: white;
-      margin: 15px auto;
-      padding: 20px;
-      max-width: 700px;
-      border-radius: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      transition: transform 0.2s ease;
-    }
-
-    section:active {
-      transform: scale(0.99);
-    }
-
+    .affiliation { color: var(--subtle); font-size: 14px; margin: 0 0 9px; }
+    .links { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 12px; font-size: 14px; }
+    .links a + a::before { content: "·"; color: #8b949e; margin-right: 12px; pointer-events: none; }
+    .intro { margin: 17px 0 7px; max-width: 785px; }
+    .interests { margin: 0 0 7px; color: var(--subtle); font-size: 14px; }
+    main section { margin-top: 21px; }
     h2 {
-      font-size: 18px;
-      margin-bottom: 12px;
+      font: 600 19px/1.3 Georgia, "Times New Roman", serif;
+      margin: 0 0 9px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--rule);
+      letter-spacing: -.15px;
     }
-
-    select, textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-size: 16px;
-      outline: none;
-      box-sizing: border-box;
+    h3 { font-size: 15px; font-weight: 650; margin: 0; }
+    p { margin: 0; }
+    .entry { margin: 0 0 10px; }
+    .entry:last-child { margin-bottom: 0; }
+    .entry-top { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+    .date { color: var(--subtle); white-space: nowrap; font-size: 13px; }
+    .entry-detail { margin-top: 1px; color: var(--subtle); font-size: 14px; }
+    .subline { font-size: 14px; margin-top: 2px; }
+    .publication { display: grid; grid-template-columns: 20px minmax(0, 1fr); column-gap: 3px; }
+    .pub-index { color: var(--subtle); font-size: 14px; }
+    .pub-title { font-weight: 650; }
+    .pub-authors, .pub-meta { font-size: 14px; margin-top: 1px; }
+    .pub-meta { color: var(--subtle); }
+    .research-note { font-size: 14px; margin: 7px 0 0 23px; }
+    .project {
+      display: grid;
+      grid-template-columns: 177px 1fr;
+      gap: 12px;
+      padding: 7px 0;
     }
-
-    textarea {
-      resize: none;
-      height: 100px;
+    .project + .project { border-top: 1px solid #f0f1f2; }
+    .project h3 { line-height: 1.48; }
+    .project .code-link { display: block; margin-top: 1px; font-size: 13px; }
+    .project p { font-size: 14px; }
+    .skills p { margin: 3px 0; font-size: 14px; }
+    .skills strong { font-weight: 650; }
+    footer { margin-top: 24px; padding-top: 9px; border-top: 1px solid var(--rule); color: var(--subtle); font-size: 12px; }
+    @media (max-width: 600px) {
+      body { font-size: 14px; line-height: 1.55; }
+      .page { padding: 23px 20px 27px; }
+      .header h1 { font-size: 31px; }
+      .header { padding-bottom: 15px; }
+      main section { margin-top: 19px; }
+      .links { column-gap: 15px; }
+      .links a + a::before { content: none; }
+      .project { display: block; padding: 9px 0; }
+      .project h3 { display: inline; }
+      .project .code-link { display: inline; margin: 0 0 0 8px; }
+      .project p { margin-top: 2px; }
+      .entry-top { flex-wrap: wrap; gap: 0 8px; }
+      .date { font-size: 12px; }
     }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 10px;
-      background: #4a90e2;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    button:active {
-      transform: scale(0.98);
-    }
-
-    .result {
-      margin-top: 12px;
-      font-size: 14px;
-      color: #444;
-      min-height: 20px;
-    }
-
-    /* 手机优化 */
-    @media (max-width: 768px) {
-      section {
-        margin: 10px;
-        padding: 16px;
-      }
-
-      header h1 {
-        font-size: 20px;
-      }
-
-      button {
-        font-size: 15px;
-      }
-    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
-
 <body>
+<div class="page">
+  <header class="header">
+    <h1>Dong Li</h1>
+    <p class="affiliation">M.S. Student in Physical Oceanography · Shanghai Jiao Tong University</p>
+    <nav class="links" aria-label="Contact and profile links">
+      <a href="mailto:tszld@outlook.com">Email</a>
+      <a href="https://github.com/tszld">GitHub</a>
+      <a href="resume.pdf">CV (PDF)</a>
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+    </nav>
+  </header>
 
-<header>
-  <h1>心理咨询小站</h1>
-  <p>记录情绪 · 温柔陪伴</p>
-</header>
+  <main>
+    <p class="intro">I am a graduate student at Shanghai Jiao Tong University, working on Antarctic ice-sheet modeling and scientific computing. I also develop software for robotics and AI applications, with experience in voice interaction, edge inference, and Python backend systems.</p>
+    <p class="interests"><strong>Interests:</strong> Ice-sheet dynamics · Scientific machine learning · Robotics software · AI systems</p>
 
-<!-- 情绪测试 -->
-<section>
-  <h2>今天你的心情如何？</h2>
+    <section id="education" aria-labelledby="education-title">
+      <h2 id="education-title">Education</h2>
+      <div class="entry">
+        <div class="entry-top"><h3>Shanghai Jiao Tong University</h3><span class="date">Sep 2024 – Jun 2027 (expected)</span></div>
+        <p class="entry-detail">M.S. in Physical Oceanography · Second-Class Academic Scholarship (2024, 2025)</p>
+      </div>
+      <div class="entry">
+        <div class="entry-top"><h3>Taiyuan University of Technology</h3><span class="date">Sep 2018 – Jun 2022</span></div>
+        <p class="entry-detail">B.S. in Civil Engineering</p>
+      </div>
+    </section>
 
-  <select id="mood">
-    <option value="happy">开心 😊</option>
-    <option value="normal">一般 😐</option>
-    <option value="sad">难过 😢</option>
-  </select>
+    <section id="publications" aria-labelledby="pub-title">
+      <h2 id="pub-title">Publications &amp; Research</h2>
+      <div class="publication">
+        <span class="pub-index">[1]</span>
+        <div>
+          <p class="pub-title"><a href="https://doi.org/10.5194/egusphere-2025-5165">Simulated evidence for ice over 1 Ma in the Dome A region, East Antarctica</a></p>
+          <p class="pub-authors"><strong>D. Li</strong>, X. Tang, A. Chung, F. Parrenin, and B. Sun (2026)</p>
+          <p class="pub-meta">EGUsphere preprint · Submitted to <em>The Cryosphere</em> (JCR Q1) · <a href="https://egusphere.copernicus.org/preprints/2026/egusphere-2025-5165/">Preprint</a></p>
+        </div>
+      </div>
+      <p class="research-note">Developed observation-constrained ice-flow models using <strong>Elmer/Ice</strong>; performed numerical simulations and sensitivity analyses on Linux/HPC systems.</p>
+    </section>
 
-  <button onclick="checkMood()">查看建议</button>
-  <div class="result" id="moodResult"></div>
-</section>
+    <section id="experience" aria-labelledby="exp-title">
+      <h2 id="exp-title">Experience</h2>
+      <div class="entry">
+        <div class="entry-top"><h3>Kailong High Technology — Robotics / AI Application Development Intern</h3><span class="date">Jul – Nov 2026</span></div>
+        <p class="subline">Developed and iteratively improved robot voice-interaction software with Qwen speech services and BERT intent recognition; deployed local inference on <strong>Jetson Orin NX</strong> and built Flask/FastAPI services for robot–backend communication.</p>
+      </div>
+    </section>
 
-<!-- 留言 -->
-<section>
-  <h2>留言咨询</h2>
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Selected Projects</h2>
+      <div class="project">
+        <div><h3>RTC Voice Handoff</h3><a class="code-link" href="https://github.com/tszld/rtc_linux">[code]</a></div>
+        <p>Built a real-time human-operator handoff workflow connecting Linux robot audio, Aliyun ARTC, a Python control service, and a browser-based operator console.</p>
+      </div>
+      <div class="project">
+        <div><h3>Robot OTA Updates</h3><a class="code-link" href="https://github.com/tszld/OTA_linux">[code]</a></div>
+        <p>Developed remote software and voice-content update workflows, including client-side document updates and administrator-side version/configuration management.</p>
+      </div>
+      <div class="project">
+        <div><h3>Soft Robotic Hand &amp; Tactile Sensing</h3></div>
+        <p>Fabricated silicone tactile structures, configured camera-based sensing, and collected contact images with position- and force-related measurements.</p>
+      </div>
+      <div class="project">
+        <div><h3>LLM Agent Framework</h3></div>
+        <p>Implemented multi-step agent workflows with planning, memory, function calling, and external tool integration through an MCP client.</p>
+      </div>
+    </section>
 
-  <textarea id="message" placeholder="写下你的烦恼..."></textarea>
-
-  <button onclick="submitMessage()">提交</button>
-  <div class="result" id="msgResult"></div>
-</section>
-
-<!-- 关于 -->
-<section>
-  <h2>关于我们</h2>
-  <p style="font-size:14px; line-height:1.6;">
-    我们提供基础心理支持与情绪记录功能。<br>
-    如果你长期感到情绪困扰，建议寻求专业心理帮助。
-  </p>
-</section>
-
-<script>
-  function checkMood() {
-    const mood = document.getElementById("mood").value;
-    const result = document.getElementById("moodResult");
-
-    if (mood === "happy") {
-      result.innerText = "✨ 很棒！今天的你充满能量，继续保持～";
-    } else if (mood === "normal") {
-      result.innerText = "🌿 可以去散步、听音乐，让自己放松一下。";
-    } else {
-      result.innerText = "🌙 你可以先休息一下，或者找人聊聊，你并不孤单。";
-    }
-  }
-
-  function submitMessage() {
-    const msg = document.getElementById("message").value;
-    const result = document.getElementById("msgResult");
-
-    if (msg.trim() === "") {
-      result.innerText = "⚠️ 请输入内容再提交。";
-      return;
-    }
-
-    result.innerText = "💙 已收到你的留言，我们会认真看见你的情绪。";
-  }
-</script>
-
+    <section class="skills" id="skills" aria-labelledby="skills-title">
+      <h2 id="skills-title">Technical Skills</h2>
+      <p><strong>Programming:</strong> Python, Flask, FastAPI, Redis, SQLite, Git, Linux, Docker</p>
+      <p><strong>AI &amp; computing:</strong> PyTorch, BERT, Qwen, OpenAI SDK, MCP, Jetson Orin NX, Elmer/Ice, HPC</p>
+    </section>
+  </main>
+  <footer>Dong Li · <a href="mailto:tszld@outlook.com">tszld@outlook.com</a> · Last updated November 2026</footer>
+</div>
 </body>
 </html>
